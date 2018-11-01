@@ -1,6 +1,7 @@
 
 require 'sinatra/base'
 require 'pg'
+require './lib/posts'
 class ClassName < Sinatra::Base
   get '/' do
     'Hello World'
