@@ -1,0 +1,1 @@
+CREATE TABLE user_details(id SERIAL PRIMARY KEY, message VARCHAR(60));

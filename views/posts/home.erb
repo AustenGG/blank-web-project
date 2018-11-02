@@ -42,16 +42,12 @@ button {
 }
 </style>
 
-<ul>
-  <% @posts.each do |post| %>
-  <li><%= post %></li>
-  <% end %>
-  </ul>
-  <html>
-  <form action="/" method="get">
-  <input type="submit" value="home"/>
-  </form>
+<html>
+<center> <h1>Chitter!</h1> </center>
+<form action="/posts" method="post">
+<input type="submit" value="posts"/>
+</form>
 <form action="/posts/new" method="get">
 <input type="submit" value="create" />
 </form>
-  </html>
+</html>

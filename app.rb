@@ -4,7 +4,20 @@ require 'pg'
 require './lib/posts'
 class ClassName < Sinatra::Base
   get '/' do
-    'Hello World'
+    erb :'/posts/sign_up'
+  end
+  
+  post '/' do
+    username = params['username']
+    password = params['password']
+    connection = PG.connect(dbname: 'posts')
+    connection.exec("INSERT INTO user_details (username, password) VALUES('#{username}', '#{password}')")
+
+    redirect '/home'
+  end
+
+  get '/home' do
+    erb :'posts/home'
   end
 
   get '/posts' do
@@ -20,6 +33,9 @@ class ClassName < Sinatra::Base
     message = params['message']
     connection = PG.connect(dbname: 'posts')
     connection.exec ("INSERT INTO messages (message) VALUES('#{message}')")
+    redirect '/posts'
+
+
   end
   run! if app_file == $0
 end
